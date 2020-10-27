@@ -942,13 +942,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722811389}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: -9.1, z: -0.2}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!114 &342895486021736123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1027,40 +1027,40 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 0}
   shallowColor: {r: 0, g: 0.7725491, b: 0.62352943, a: 0.5019608}
-  deepColor: {r: 0.01176471, g: 0.28613815, b: 0.50980073, a: 1}
-  colorDepth: 3
-  horizonColor: {r: 0, g: 0.22729552, b: 0.8, a: 1}
-  horizonDistance: 20
+  deepColor: {r: 0.01176471, g: 0.28561547, b: 0.50980073, a: 1}
+  colorDepth: 3.5
+  horizonColor: {r: 0.028408667, g: 0.060431734, b: 0.26384315, a: 1}
+  horizonDistance: 10
   shoreFade: 1
-  shoreColor: {r: 0, g: 0.98039216, b: 0.30180532, a: 0}
-  shoreStrength: 0
+  shoreColor: {r: 0, g: 1, b: 0.68549544, a: 0.425}
+  shoreStrength: 0.425
   shoreBlend: 1
-  shoreDepth: 0.74
-  waveColor: {r: 0, g: 0, b: 0, a: 0}
-  underwaterColor: {r: 0.20377421, g: 0.30964842, b: 0.517647, a: 0}
-  underwaterColorStrength: 0
-  underwaterRefractionStrength: 0.099
-  surfaceFoamTexture: {fileID: 2800000, guid: 5293ac8cd3dd6f6478585f4f30abddf7, type: 3}
-  surfaceFoamSampling: {x: 0.62, y: 1.02}
-  surfaceFoamCutoff: 0.62
-  surfaceFoamDistortion: 1.02
+  shoreDepth: 1.43
+  waveColor: {r: 0.0024919799, g: 0.13942152, b: 0.18841815, a: 1}
+  underwaterColor: {r: 1, g: 1, b: 1, a: 1}
+  underwaterColorStrength: 1
+  underwaterRefractionStrength: 0
+  surfaceFoamTexture: {fileID: 2800000, guid: 86ed7ce9e52fd71459c3ce9ac144d310, type: 3}
+  surfaceFoamSampling: {x: 0.236, y: 1.14}
+  surfaceFoamCutoff: 0.236
+  surfaceFoamDistortion: 1.14
   surfaceFoamBlend: 1
-  surfaceFoamColor1: {r: 1, g: 0, b: 0, a: 0.3215686}
-  surfaceFoamColor2: {r: 0, g: 0.34551826, b: 1, a: 0.7294118}
+  surfaceFoamColor1: {r: 1, g: 1, b: 1, a: 0.3215686}
+  surfaceFoamColor2: {r: 0.4339435, g: 0.4339435, b: 0.4339435, a: 0.5764706}
   surfaceFoamMovement: {x: 0.7, y: 0, z: 0.47, w: 0.01}
   surfaceFoamDirection1: 0.7
   surfaceFoamDirection2: 0.47
   surfaceFoamSpeed1: 0
   surfaceFoamSpeed2: 0.01
-  surfaceFoamTilingAndOffset: {x: -1, y: -1, z: 0.57, w: 0.22}
+  surfaceFoamTilingAndOffset: {x: -1, y: -1, z: 0.82, w: 0.5}
   surfaceFoamOffsetX: -1
   surfaceFoamOffsetY: -1
-  surfaceFoamScale1: 0.57
-  surfaceFoamScale2: 0.22
-  enableSurfaceFoam: 0
-  surfaceFoamHeightMask: 0
-  surfaceFoamHeightMaskSmoothness: 0
-  enableHeightMask: 0
+  surfaceFoamScale1: 0.82
+  surfaceFoamScale2: 0.5
+  enableSurfaceFoam: 1
+  surfaceFoamHeightMask: 0.155
+  surfaceFoamHeightMaskSmoothness: 1
+  enableHeightMask: 1
   foamShadowStrength: 0.45
   foamShadowDepth: 10
   surfaceFoamShadowProjection: 15
@@ -1085,14 +1085,14 @@ MonoBehaviour:
   shoreFoamBreakupStrength: 0
   shoreFoamBreakupScale: 0
   lighting: 0
-  lightingSmoothness: 0.636
-  lightingSpecularColor: {r: 0.75686276, g: 0.75686276, b: 0.75686276, a: 0}
+  lightingSmoothness: 0.78
+  lightingSpecularColor: {r: 1.5058825, g: 1.5058825, b: 1.5058825, a: 0}
   lightingDiffuseColor: {r: 0, g: 0, b: 0, a: 0}
-  lightingHardness: 0
+  lightingHardness: 1
   normalsTexture: {fileID: 2800000, guid: 82cc9f62fd63eb144b3397364af688b2, type: 3}
-  normalsMovement: {x: 0.04, y: 0.36}
-  normalsStrength: 0.136
-  normalsScale: 0.36
+  normalsMovement: {x: 0.04, y: 0.4}
+  normalsStrength: 0.486
+  normalsScale: 0.4
   normalsSpeed: 0.04
   refractionStrength: 0.022
   waveVisuals: {x: 0.132, y: 10, z: 1.38}
@@ -1106,7 +1106,7 @@ MonoBehaviour:
   waveDirection4: 0.33
   waterUVs: 1
   hideComponents: 0
-  enableFoamShadows: 0
+  enableFoamShadows: 1
   enableRefraction: 0
   meshRenderer: {fileID: 4275543663597810972}
   meshFilter: {fileID: 7523616277095549413}
