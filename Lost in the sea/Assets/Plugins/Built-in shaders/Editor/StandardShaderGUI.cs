@@ -2,7 +2,7 @@
 
 using System;
 using UnityEngine;
-using TargetAttributes = UnityEditor.BuildTargetDiscovery.TargetAttributes;
+//using TargetAttributes = UnityEditor.BuildTargetDiscovery.TargetAttributes;
 
 namespace UnityEditor
 {
@@ -262,7 +262,7 @@ namespace UnityEditor
         {
             m_MaterialEditor.TexturePropertySingleLine(Styles.normalMapText, bumpMap, bumpMap.textureValue != null ? bumpScale : null);
             if (bumpScale.floatValue != 1
-                && BuildTargetDiscovery.PlatformHasFlag(EditorUserBuildSettings.activeBuildTarget, TargetAttributes.HasIntegratedGPU))
+                /*&& BuildTargetDiscovery.PlatformHasFlag(EditorUserBuildSettings.activeBuildTarget, TargetAttributes.HasIntegratedGPU)*/)
                 if (m_MaterialEditor.HelpBoxWithButton(
                     EditorGUIUtility.TrTextContent("Bump scale is not supported on mobile platforms"),
                     EditorGUIUtility.TrTextContent("Fix Now")))
