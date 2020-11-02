@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: cdda35c3caceb2042844b7e273d0c925
+guid: 6823c8d2d66b33e4885dad01a32fdb3a
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Parasol1
+    second: {fileID: 2100000, guid: 025fd79705ae0194a91a64b1fceebeaa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Parasol2
+    second: {fileID: 2100000, guid: 1c84841722becf14a8623f61c9f770cc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 1745574a8ba2c1a4f9f11295cc97e9ee, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

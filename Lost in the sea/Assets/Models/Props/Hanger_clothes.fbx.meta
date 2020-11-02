@@ -1,9 +1,39 @@
 fileFormatVersion: 2
-guid: 90dc546f5cf687c4998bf9a74dc9bbf2
+guid: dd9dbe691d60f70458fa36a05c1f60dd
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Clothes1
+    second: {fileID: 2100000, guid: 025fd79705ae0194a91a64b1fceebeaa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Clothes2
+    second: {fileID: 2100000, guid: 1c84841722becf14a8623f61c9f770cc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Clothes3
+    second: {fileID: 2100000, guid: 20ac429cb506ef54280201645127a6f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pliers
+    second: {fileID: 2100000, guid: fa72cc8cda47e9f4f8add63b13b5b9ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rope
+    second: {fileID: 2100000, guid: e0a474c88cc7ca142b71e6eb48e6703e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood1
+    second: {fileID: 2100000, guid: 1745574a8ba2c1a4f9f11295cc97e9ee, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
