@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Vegetation
+  m_Name: GradientVegetation
   m_Shader: {fileID: -6465566751694194690, guid: e763c2f10a8252d4eb405171cc8e3714, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
