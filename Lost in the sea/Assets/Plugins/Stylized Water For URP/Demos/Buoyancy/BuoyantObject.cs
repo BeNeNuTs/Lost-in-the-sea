@@ -14,12 +14,6 @@ public class BuoyantObject : MonoBehaviour
     private Color blue = new Color(0.2f, 0.67f, 0.92f);
     private Color orange = new Color(0.97f, 0.79f, 0.26f);
 
-    // Wave properties
-    private float steepness;
-    private float wavelength;
-    private float speed;
-    private float[] directions = new float[4];
-
     [Header("Water Object")]
     public StylizedWater.StylizedWaterURP water;
 
@@ -38,12 +32,6 @@ public class BuoyantObject : MonoBehaviour
 
     void Awake()
     {
-        // Get wave properties from water
-        steepness = water.GetWaveSteepness();
-        wavelength = water.GetWaveLength();
-        speed = water.GetWaveSpeed();
-        directions = water.GetWaveDirections();
-
         // Get rigidbody
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
@@ -66,7 +54,7 @@ public class BuoyantObject : MonoBehaviour
             Vector3 effectorPosition = effectors[i].position;
 
             effectorProjections[i] = effectorPosition;
-            effectorProjections[i].y = water.transform.position.y + GerstnerWaveDisplacement.GetWaveDisplacement(effectorPosition, steepness, wavelength, speed, directions).y;
+            effectorProjections[i].y = water.transform.position.y + GerstnerWaveDisplacement.GetWaveDisplacement(effectorPosition, water.GetWaveSteepness(), water.GetWaveLength(), water.GetWaveSpeed(), water.GetWaveDirections()).y;
 
             // gravity
             rb.AddForceAtPosition(Physics.gravity / effectorAmount, effectorPosition, ForceMode.Acceleration);

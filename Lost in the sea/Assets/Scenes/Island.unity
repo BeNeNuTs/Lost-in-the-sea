@@ -1683,16 +1683,16 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 0}
   shallowColor: {r: 0, g: 0.7725491, b: 0.62352943, a: 0.5019608}
-  deepColor: {r: 0.01176471, g: 0.2855241, b: 0.50980073, a: 1}
+  deepColor: {r: 0.01176471, g: 0.28545076, b: 0.50980073, a: 1}
   colorDepth: 1
-  horizonColor: {r: 0.028408667, g: 0.06037578, b: 0.26376855, a: 1}
+  horizonColor: {r: 0.028408667, g: 0.060320787, b: 0.26369524, a: 1}
   horizonDistance: 17.5
   shoreFade: 1
   shoreColor: {r: 0, g: 1, b: 0.68549544, a: 0.425}
   shoreStrength: 0.425
   shoreBlend: 1
   shoreDepth: 1.43
-  waveColor: {r: 0.0024919799, g: 0.13933489, b: 0.18833151, a: 1}
+  waveColor: {r: 0.0024919799, g: 0.13926539, b: 0.18826202, a: 1}
   underwaterColor: {r: 1, g: 1, b: 1, a: 1}
   underwaterColorStrength: 1
   underwaterRefractionStrength: 0
@@ -1702,7 +1702,7 @@ MonoBehaviour:
   surfaceFoamDistortion: 1.14
   surfaceFoamBlend: 1
   surfaceFoamColor1: {r: 1, g: 1, b: 1, a: 0.3215686}
-  surfaceFoamColor2: {r: 0.4338521, g: 0.4338521, b: 0.4338521, a: 0.5764706}
+  surfaceFoamColor2: {r: 0.4337788, g: 0.4337788, b: 0.4337788, a: 0.5764706}
   surfaceFoamMovement: {x: 0.7, y: 0, z: 0.47, w: 0.01}
   surfaceFoamDirection1: 0.7
   surfaceFoamDirection2: 0.47
@@ -1751,10 +1751,10 @@ MonoBehaviour:
   normalsScale: 0.4
   normalsSpeed: 0.04
   refractionStrength: 0.022
-  waveVisuals: {x: 0.132, y: 10, z: 1.38}
-  waveSteepness: 0.132
-  waveLength: 10
-  waveSpeed: 1.38
+  waveVisuals: {x: 0.085, y: 3, z: 0.7}
+  waveSteepness: 0.085
+  waveLength: 3
+  waveSpeed: 0.7
   waveDirections: {x: 0, y: 0.64, z: 1, w: 0.33}
   waveDirection1: 0
   waveDirection2: 0.64
