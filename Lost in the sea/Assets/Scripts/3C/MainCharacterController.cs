@@ -12,6 +12,12 @@ public class MainCharacterController : MonoBehaviour
     private Vector3 m_LastInputMoveDirection;
     private Vector3 m_CurrentVelocity;
 
+    private void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     private void Update()
     {
         Move();
