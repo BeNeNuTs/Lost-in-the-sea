@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 8980488084716554664}
   - component: {fileID: 3431060387165074769}
   m_Layer: 0
-  m_Name: Grass_2
+  m_Name: SubmarineGrass_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &142458129595478942
 Transform:
