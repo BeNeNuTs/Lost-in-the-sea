@@ -14,8 +14,7 @@ public class MainCharacterController : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        ToggleMouseLockState();
     }
 
     private void Update()
@@ -24,6 +23,19 @@ public class MainCharacterController : MonoBehaviour
         LookAt();
 
         UpdateSpeed();
+
+#if UNITY_EDITOR
+        if(Keyboard.current.escapeKey.isPressed)
+        {
+            ToggleMouseLockState();
+        }
+#endif
+    }
+
+    private void ToggleMouseLockState()
+    {
+        Cursor.visible = !Cursor.visible;
+        Cursor.lockState = Cursor.visible ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     private void Move()
