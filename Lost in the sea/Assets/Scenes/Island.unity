@@ -292,6 +292,7 @@ Transform:
   m_Children:
   - {fileID: 543450652927999546}
   - {fileID: 821874027}
+  - {fileID: 814263641}
   m_Father: {fileID: 839380039}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -641,6 +642,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3718325713260917821, guid: 0a0d5e339f3616144af979e64be7370e, type: 3}
   m_PrefabInstance: {fileID: 174497149}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &242815629 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 529295592889223673, guid: a4813ee674f241244979d40f90319622, type: 3}
+  m_PrefabInstance: {fileID: 835706182380154233}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &242815633
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242815629}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.7047534, y: 0.7095034, z: 6.337249}
+  m_Center: {x: -0.088506944, y: 0.3925549, z: 0.75445306}
+--- !u!65 &242815634
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242815629}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.12808214, y: 2.5678577, z: 4.6159654}
+  m_Center: {x: 2.1204822, y: 1.321715, z: 0.7881922}
 --- !u!1001 &327289355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1221,6 +1253,50 @@ Transform:
   m_Father: {fileID: 839380039}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &814263639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 814263641}
+  - component: {fileID: 814263640}
+  m_Layer: 0
+  m_Name: Stairs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &814263640
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814263639}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5003111, y: 1, z: 1.7534802}
+  m_Center: {x: 0.07202482, y: 0.00000011571714, z: -0.37674892}
+--- !u!4 &814263641
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814263639}
+  m_LocalRotation: {x: -0.03889935, y: -0.23845229, z: 0.17629266, w: 0.95422655}
+  m_LocalPosition: {x: 69.333, y: 0.909, z: 25.019}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 57693167}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0.564, y: -27.957, z: 20.794}
 --- !u!4 &821874027 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4349247049431262428, guid: 54ed8bdf6698ab84fae2a9196151827b, type: 3}
@@ -2266,16 +2342,16 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 0}
   shallowColor: {r: 0, g: 0.7725491, b: 0.62352943, a: 0.5019608}
-  deepColor: {r: 0.01176471, g: 0.2854445, b: 0.50980073, a: 1}
+  deepColor: {r: 0.01176471, g: 0.28544956, b: 0.50980073, a: 1}
   colorDepth: 1
-  horizonColor: {r: 0.028408667, g: 0.060316093, b: 0.26368898, a: 1}
+  horizonColor: {r: 0.028408667, g: 0.060319893, b: 0.26369405, a: 1}
   horizonDistance: 17.5
   shoreFade: 1
   shoreColor: {r: 0, g: 1, b: 0.68549544, a: 0.425}
   shoreStrength: 0.425
   shoreBlend: 1
   shoreDepth: 1.43
-  waveColor: {r: 0.0024919799, g: 0.13925946, b: 0.18825608, a: 1}
+  waveColor: {r: 0.0024919799, g: 0.13926426, b: 0.18826088, a: 1}
   underwaterColor: {r: 1, g: 1, b: 1, a: 1}
   underwaterColorStrength: 1
   underwaterRefractionStrength: 0
@@ -2285,7 +2361,7 @@ MonoBehaviour:
   surfaceFoamDistortion: 1.14
   surfaceFoamBlend: 1
   surfaceFoamColor1: {r: 1, g: 1, b: 1, a: 0.3215686}
-  surfaceFoamColor2: {r: 0.43377253, g: 0.43377253, b: 0.43377253, a: 0.5764706}
+  surfaceFoamColor2: {r: 0.4337776, g: 0.4337776, b: 0.4337776, a: 0.5764706}
   surfaceFoamMovement: {x: 0.7, y: 0, z: 0.47, w: 0.01}
   surfaceFoamDirection1: 0.7
   surfaceFoamDirection2: 0.47
@@ -3483,6 +3559,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 57693167}
     m_Modifications:
+    - target: {fileID: 3699718008111276, guid: a4813ee674f241244979d40f90319622, type: 3}
+      propertyPath: m_Size.x
+      value: 3.5887504
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699718008111276, guid: a4813ee674f241244979d40f90319622, type: 3}
+      propertyPath: m_Center.x
+      value: -0.64036715
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699718008111276, guid: a4813ee674f241244979d40f90319622, type: 3}
+      propertyPath: m_Center.z
+      value: 0.76255316
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699718008111276, guid: a4813ee674f241244979d40f90319622, type: 3}
+      propertyPath: m_Size.z
+      value: 5.3776884
+      objectReference: {fileID: 0}
     - target: {fileID: 529295592889223673, guid: a4813ee674f241244979d40f90319622, type: 3}
       propertyPath: m_Name
       value: House_1
@@ -4121,11 +4213,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 963009166, guid: 23b134c9d30851f44a073e6c8a1e4666, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00048976095
+      value: 0.00048974407
       objectReference: {fileID: 0}
     - target: {fileID: 963009166, guid: 23b134c9d30851f44a073e6c8a1e4666, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00009603924
+      value: -0.00009603594
       objectReference: {fileID: 0}
     - target: {fileID: 1152799753, guid: 23b134c9d30851f44a073e6c8a1e4666, type: 3}
       propertyPath: m_LocalRotation.y
@@ -4137,11 +4229,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1842820373, guid: 23b134c9d30851f44a073e6c8a1e4666, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00048976095
+      value: 0.00048974407
       objectReference: {fileID: 0}
     - target: {fileID: 1842820373, guid: 23b134c9d30851f44a073e6c8a1e4666, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000096039235
+      value: -0.00009603593
       objectReference: {fileID: 0}
     - target: {fileID: 4982910229352352906, guid: 23b134c9d30851f44a073e6c8a1e4666, type: 3}
       propertyPath: m_Name
