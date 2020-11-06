@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Swatch
-    second: {fileID: 2100000, guid: 35fe3d8f062fea54487997cfa050884e, type: 2}
+    second: {fileID: 2100000, guid: 6a47fe6b47066e549be49345b1ec9fbd, type: 2}
   materials:
     materialImportMode: 1
     materialName: 1
