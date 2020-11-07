@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4357064629723292584}
   - component: {fileID: 3727956743742832011}
   - component: {fileID: 749298286761916462}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: WaterMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
