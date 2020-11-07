@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerContainer : Singleton<PlayerContainer>
@@ -7,4 +8,5 @@ public class PlayerContainer : Singleton<PlayerContainer>
     public MainCharacterController m_MainCharacterController;
     public PlayerInput m_PlayerInput;
     public CapsuleCollider m_ClothCollider;
+    public TextMeshProUGUI m_InteractText;
 }

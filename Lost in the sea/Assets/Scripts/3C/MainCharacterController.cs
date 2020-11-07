@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
@@ -20,6 +21,11 @@ public class MainCharacterController : MonoBehaviour
     private Vector3 m_DesiredVelocity;
     private Vector3 m_GroundVelocity;
 
+    private bool m_IsInBoat = false;
+    private BoatController m_BoatController;
+
+    public Action OnInteractCallback;
+
     private void Awake()
     {
         ToggleMouseLockState();
@@ -33,7 +39,7 @@ public class MainCharacterController : MonoBehaviour
         UpdateSpeed();
 
 #if UNITY_EDITOR
-        if(Keyboard.current.escapeKey.isPressed)
+        if (Keyboard.current.escapeKey.isPressed)
         {
             ToggleMouseLockState();
         }
@@ -52,7 +58,7 @@ public class MainCharacterController : MonoBehaviour
         m_DesiredVelocity.x = desiredMoveDirection.x;
         m_DesiredVelocity.z = desiredMoveDirection.z;
 
-        if(CanMoveTo(desiredMoveDirection))
+        if (CanMoveTo(desiredMoveDirection))
         {
             m_CharacterController.Move(m_DesiredVelocity * Time.deltaTime * m_Speed);
         }
@@ -65,7 +71,7 @@ public class MainCharacterController : MonoBehaviour
 
     private bool CanMoveTo(Vector3 _desiredMoveDirection)
     {
-        if(_desiredMoveDirection != Vector3.zero)
+        if (_desiredMoveDirection != Vector3.zero)
         {
             Vector3 normalizedMoveDirection = _desiredMoveDirection.normalized;
 
@@ -90,7 +96,7 @@ public class MainCharacterController : MonoBehaviour
         m_Animator.SetFloat("Speed", m_GroundVelocity.magnitude);
     }
 
-    private Vector3 GetDesiredMoveDirection()
+    public Vector3 GetDesiredMoveDirection()
     {
         Vector3 forward = m_Camera.forward;
         Vector3 right = m_Camera.right;
@@ -105,8 +111,40 @@ public class MainCharacterController : MonoBehaviour
         return forward * m_LastInputMoveDirection.y + right * m_LastInputMoveDirection.x;
     }
 
+    public bool IsInBoat()
+    {
+        return m_IsInBoat;
+    }
+
+    public BoatController GetCurrentBoat()
+    {
+        return m_BoatController;
+    }
+
+    public void SetInBoat(BoatController _boatController)
+    {
+        m_IsInBoat = _boatController != null;
+        enabled = !m_IsInBoat;
+        m_CharacterController.enabled = !m_IsInBoat;
+        if (m_IsInBoat)
+        {
+            _boatController.ProxyPlayer(this);
+        }
+        else
+        {
+            m_BoatController.UnproxyPlayer();
+        }
+        m_BoatController = _boatController;
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         m_LastInputMoveDirection = context.ReadValue<Vector2>();
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            OnInteractCallback?.Invoke();
     }
 }

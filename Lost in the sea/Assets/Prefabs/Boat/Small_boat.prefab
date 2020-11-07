@@ -249,6 +249,7 @@ GameObject:
   - component: {fileID: 1852497009402194770}
   - component: {fileID: 4788773638036244793}
   - component: {fileID: 9078911858710231716}
+  - component: {fileID: 251624977327901521}
   m_Layer: 12
   m_Name: Small_boat
   m_TagString: Untagged
@@ -375,6 +376,20 @@ MonoBehaviour:
   - {fileID: 4844650757903644710}
   - {fileID: 6285006314374997645}
   - {fileID: 3120896813302957121}
+--- !u!114 &251624977327901521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8623949366376825106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a925e421b297c6c4a883c0a8d8f1c53e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Rigidbody: {fileID: 4788773638036244793}
+  m_Speed: 3
 --- !u!1001 &200134589157936434
 PrefabInstance:
   m_ObjectHideFlags: 0

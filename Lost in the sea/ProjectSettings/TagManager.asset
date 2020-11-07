@@ -16,10 +16,10 @@ TagManager:
   - WaterMask
   - Terrain
   - Cloth
-  - ClothInteractor
+  - PlayerInteractor
   - Boat
-  - 
-  - 
+  - MainCharacter
+  - Interactor
   - 
   - 
   - 
