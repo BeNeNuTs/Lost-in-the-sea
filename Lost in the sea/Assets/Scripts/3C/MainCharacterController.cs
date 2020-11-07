@@ -4,13 +4,20 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class MainCharacterController : MonoBehaviour
 {
+    [Header("Setup")]
     public CharacterController m_CharacterController;
     public Transform m_Camera;
     public Animator m_Animator;
     public float m_Speed = 3f;
 
+    [Header("Floor Raycast")]
+    public float m_FloorRaycastDistanceFromOwner = 1f;
+    public float m_FloorRaycastLength = 3f;
+    public LayerMask m_WaterLayerMask;
+    public LayerMask m_FloorRaycastLayerMask;
+
     private Vector2 m_LastInputMoveDirection;
-    private Vector3 m_CurrentVelocity;
+    private Vector3 m_DesiredVelocity;
     private Vector3 m_GroundVelocity;
 
     private void Awake()
@@ -42,15 +49,34 @@ public class MainCharacterController : MonoBehaviour
     private void Move()
     {
         Vector3 desiredMoveDirection = GetDesiredMoveDirection();
-        m_CurrentVelocity.x = desiredMoveDirection.x;
-        m_CurrentVelocity.z = desiredMoveDirection.z;
+        m_DesiredVelocity.x = desiredMoveDirection.x;
+        m_DesiredVelocity.z = desiredMoveDirection.z;
 
-        m_CharacterController.Move(m_CurrentVelocity * Time.deltaTime * m_Speed);
+        if(CanMoveTo(desiredMoveDirection))
+        {
+            m_CharacterController.Move(m_DesiredVelocity * Time.deltaTime * m_Speed);
+        }
         m_GroundVelocity = new Vector3(m_CharacterController.velocity.x, 0f, m_CharacterController.velocity.z);
 
-        m_CurrentVelocity.y += Physics.gravity.y;
-        if (m_CharacterController.isGrounded && m_CurrentVelocity.y < 0f)
-            m_CurrentVelocity.y = 0f;
+        m_DesiredVelocity.y += Physics.gravity.y;
+        if (m_CharacterController.isGrounded && m_DesiredVelocity.y < 0f)
+            m_DesiredVelocity.y = 0f;
+    }
+
+    private bool CanMoveTo(Vector3 _desiredMoveDirection)
+    {
+        if(_desiredMoveDirection != Vector3.zero)
+        {
+            Vector3 normalizedMoveDirection = _desiredMoveDirection.normalized;
+
+            Ray ray = new Ray(transform.position + (normalizedMoveDirection * m_FloorRaycastDistanceFromOwner) + (Vector3.up * (m_FloorRaycastLength / 2f)), Vector3.down);
+            bool hasHitSomething = Physics.Raycast(ray, out RaycastHit hitInfo, m_FloorRaycastLength, m_FloorRaycastLayerMask, QueryTriggerInteraction.Ignore);
+            Debug.DrawLine(ray.origin, ray.origin + Vector3.down * m_FloorRaycastLength, hasHitSomething ? Color.green : Color.red);
+
+            return hasHitSomething && !m_WaterLayerMask.Contains(hitInfo.transform.gameObject.layer);
+        }
+
+        return true;
     }
 
     private void LookAt()
