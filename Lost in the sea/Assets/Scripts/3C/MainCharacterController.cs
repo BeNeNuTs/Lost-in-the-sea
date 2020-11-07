@@ -9,8 +9,9 @@ public class MainCharacterController : MonoBehaviour
     public Animator m_Animator;
     public float m_Speed = 3f;
 
-    private Vector3 m_LastInputMoveDirection;
+    private Vector2 m_LastInputMoveDirection;
     private Vector3 m_CurrentVelocity;
+    private Vector3 m_GroundVelocity;
 
     private void Awake()
     {
@@ -45,6 +46,7 @@ public class MainCharacterController : MonoBehaviour
         m_CurrentVelocity.z = desiredMoveDirection.z;
 
         m_CharacterController.Move(m_CurrentVelocity * Time.deltaTime * m_Speed);
+        m_GroundVelocity = new Vector3(m_CharacterController.velocity.x, 0f, m_CharacterController.velocity.z);
 
         m_CurrentVelocity.y += Physics.gravity.y;
         if (m_CharacterController.isGrounded && m_CurrentVelocity.y < 0f)
@@ -53,14 +55,13 @@ public class MainCharacterController : MonoBehaviour
 
     private void LookAt()
     {
-        if (m_CurrentVelocity.x != 0f || m_CurrentVelocity.z != 0f)
-            transform.forward = new Vector3(m_CurrentVelocity.x, 0f, m_CurrentVelocity.z);
+        if (m_GroundVelocity != Vector3.zero)
+            transform.forward = m_GroundVelocity;
     }
 
     private void UpdateSpeed()
     {
-        Vector3 groundVelocity = new Vector3(m_CharacterController.velocity.x, 0f, m_CharacterController.velocity.z);
-        m_Animator.SetFloat("Speed", groundVelocity.magnitude);
+        m_Animator.SetFloat("Speed", m_GroundVelocity.magnitude);
     }
 
     private Vector3 GetDesiredMoveDirection()
@@ -75,12 +76,11 @@ public class MainCharacterController : MonoBehaviour
         right.Normalize();
 
         //this is the direction in the world space we want to move:
-        return forward * m_LastInputMoveDirection.z + right * m_LastInputMoveDirection.x;
+        return forward * m_LastInputMoveDirection.y + right * m_LastInputMoveDirection.x;
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        Vector2 inputMove = context.ReadValue<Vector2>();
-        m_LastInputMoveDirection = new Vector3(inputMove.x, 0f, inputMove.y);
+        m_LastInputMoveDirection = context.ReadValue<Vector2>();
     }
 }
