@@ -36,7 +36,7 @@ public class MainCharacterController : MonoBehaviour
         Move();
         LookAt();
 
-        UpdateSpeed();
+        UpdateSpeed(m_GroundVelocity.magnitude);
 
 #if UNITY_EDITOR
         if (Keyboard.current.escapeKey.isPressed)
@@ -91,9 +91,9 @@ public class MainCharacterController : MonoBehaviour
             transform.forward = m_GroundVelocity;
     }
 
-    private void UpdateSpeed()
+    public void UpdateSpeed(float speed)
     {
-        m_Animator.SetFloat("Speed", m_GroundVelocity.magnitude);
+        m_Animator.SetFloat("Speed", speed);
     }
 
     public Vector3 GetDesiredMoveDirection()
