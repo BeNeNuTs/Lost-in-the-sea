@@ -2,7 +2,9 @@
 
 public class BoatController : MonoBehaviour
 {
+    [Header("Setup")]
     public Rigidbody m_Rigidbody;
+    public Transform m_AnchorPoint;
 
     [Header("Navigation")]
     public float m_Acceleration;

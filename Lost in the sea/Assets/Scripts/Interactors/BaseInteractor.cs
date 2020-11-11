@@ -11,13 +11,23 @@ public abstract class BaseInteractor : MonoBehaviour
     private void Start()
     {
         m_MainCharacterController = PlayerContainer.Instance.m_MainCharacterController;
+        OnStart_Internal();
     }
+
+    protected virtual void OnStart_Internal() {}
 
     private void OnDestroy()
     {
         if(InteractorDisplayer.Instance)
             InteractorDisplayer.Instance.UnregisterDisplayer(this);
     }
+
+    private void Update()
+    {
+        OnUpdate_Internal();
+    }
+
+    protected virtual void OnUpdate_Internal() {}
 
     private void OnTriggerEnter(Collider other)
     {

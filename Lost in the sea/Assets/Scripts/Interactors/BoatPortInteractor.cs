@@ -9,7 +9,7 @@ public class BoatPortInteractor : BaseInteractor
     {
         base.OnPlayerInteract_Internal();
 
-        m_BoatAnchorInteractor.m_AnchoredBoatController = m_MainCharacterController.GetCurrentBoat();
+        m_BoatAnchorInteractor.SetAnchoredBoat(m_MainCharacterController.GetCurrentBoat());
         m_MainCharacterController.transform.position = m_ExitPoint.position;
         m_MainCharacterController.SetInBoat(null);
     }
