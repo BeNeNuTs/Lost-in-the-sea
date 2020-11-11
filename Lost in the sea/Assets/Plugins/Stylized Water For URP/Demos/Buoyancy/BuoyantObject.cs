@@ -18,6 +18,8 @@ public class BuoyantObject : MonoBehaviour
     public StylizedWater.StylizedWaterURP water;
 
     [Header("Buoyancy")]
+    public Vector3 m_Gravity = Physics.gravity;
+
     [Range(1, 5)] public float strength = 1f;
     [Range(0.2f, 5)] public float objectDepth = 1f;
 
@@ -57,7 +59,7 @@ public class BuoyantObject : MonoBehaviour
             effectorProjections[i].y = water.transform.position.y + GerstnerWaveDisplacement.GetWaveDisplacement(effectorPosition, water.GetWaveSteepness(), water.GetWaveLength(), water.GetWaveSpeed(), water.GetWaveDirections()).y;
 
             // gravity
-            rb.AddForceAtPosition(Physics.gravity / effectorAmount, effectorPosition, ForceMode.Acceleration);
+            rb.AddForceAtPosition(m_Gravity / effectorAmount, effectorPosition, ForceMode.Acceleration);
 
             float waveHeight = effectorProjections[i].y;
             float effectorHeight = effectorPosition.y;
@@ -65,7 +67,7 @@ public class BuoyantObject : MonoBehaviour
             if (effectorHeight < waveHeight) // submerged
             {
                 float submersion = Mathf.Clamp01(waveHeight - effectorHeight) / objectDepth;
-                float buoyancy = Mathf.Abs(Physics.gravity.y) * submersion * strength;
+                float buoyancy = Mathf.Abs(m_Gravity.y) * submersion * strength;
 
                 // buoyancy
                 rb.AddForceAtPosition(Vector3.up * buoyancy, effectorPosition, ForceMode.Acceleration);

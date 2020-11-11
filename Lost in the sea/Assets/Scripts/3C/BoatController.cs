@@ -3,13 +3,17 @@
 public class BoatController : MonoBehaviour
 {
     public Rigidbody m_Rigidbody;
-    public BuoyantObject m_BuoyantObject;
-    public float m_Speed;
+
+    [Header("Navigation")]
+    public float m_Acceleration;
+    public float m_MaxVelocity = 4f;
     public AnimationCurve m_VelocityDragOverTime;
     public float m_MinLookAtAngleToMove = 60f;
+    public AnimationCurve m_AngularAccelerationFromAngle;
 
-    public float m_AngularSpeed;
-    public AnimationCurve m_AngularDragOverTime;
+    [Header("Buoyancy")]
+    public BuoyantObject m_BuoyantObject;
+    public Vector3 m_Gravity = Physics.gravity;
 
     //[Header("Floor Raycast")]
     //public float m_FloorRaycastDistanceFromOwner = 1f;
@@ -19,20 +23,19 @@ public class BoatController : MonoBehaviour
 
     private MainCharacterController m_PlayerOnBoard;
     private float m_InitialVelocityDrag;
-    private float m_InitialAngularDrag;
+    private Vector3 m_InitialGravity;
 
 
     private Vector3 m_DesiredMoveDirection;
     private float m_TimeToMove = 0f;
 
     private float m_LastLookAtAngle = 0f;
-    private float m_TimeToLookAt = 0f;
 
     private void Awake()
     {
         enabled = false;
         m_InitialVelocityDrag = m_BuoyantObject.velocityDrag;
-        m_InitialAngularDrag = m_BuoyantObject.angularDrag;
+        m_InitialGravity = m_BuoyantObject.m_Gravity;
     }
 
     public void ProxyPlayer(MainCharacterController _mainCharacterController)
@@ -43,6 +46,8 @@ public class BoatController : MonoBehaviour
         m_PlayerOnBoard.transform.localPosition = Vector3.zero;
         m_PlayerOnBoard.transform.localRotation = Quaternion.identity;
 
+        m_BuoyantObject.m_Gravity = m_Gravity;
+
         enabled = true;
     }
 
@@ -52,7 +57,7 @@ public class BoatController : MonoBehaviour
         m_PlayerOnBoard = null;
         enabled = false;
         m_BuoyantObject.velocityDrag = m_InitialVelocityDrag;
-        m_BuoyantObject.angularDrag = m_InitialAngularDrag;
+        m_BuoyantObject.m_Gravity = m_InitialGravity;
     }
 
     private void FixedUpdate()
@@ -64,26 +69,10 @@ public class BoatController : MonoBehaviour
 
     private void Move()
     {
-        /*bool canMoveTo = CanMoveTo(m_DesiredMoveDirection);
-        if (m_DesiredMoveDirection != Vector3.zero && canMoveTo && Mathf.Abs(m_LastLookAtAngle) < m_MinLookAtAngleToMove)
+        if (m_DesiredMoveDirection != Vector3.zero && Mathf.Abs(m_LastLookAtAngle) < m_MinLookAtAngleToMove)
         {
-            m_TimeToMove += Time.fixedDeltaTime;
-            m_TimeToMove = Mathf.Clamp(m_TimeToMove, m_MinSpeed, m_MaxSpeed);
-            m_Rigidbody.MovePosition(m_Rigidbody.position + m_DesiredMoveDirection * m_SpeedOverTime.Evaluate(m_TimeToMove) * Time.fixedDeltaTime);
-            //m_Rigidbody.AddForce(m_DesiredMoveDirection * m_SpeedOverTime.Evaluate(m_TimeToMove), ForceMode.Acceleration);
-        }
-        else if(CanMoveTo(m_Rigidbody.transform.forward))
-        {
-            m_TimeToMove -= Time.fixedDeltaTime;
-            m_TimeToMove = Mathf.Clamp(m_TimeToMove, m_MinSpeed, m_MaxSpeed);
-
-            m_Rigidbody.MovePosition(m_Rigidbody.position + m_Rigidbody.transform.forward * m_SpeedOverTime.Evaluate(m_TimeToMove) * Time.fixedDeltaTime);
-            //m_Rigidbody.AddForce(m_Rigidbody.velocity * m_SpeedOverTime.Evaluate(m_TimeToMove) * Time.fixedDeltaTime, ForceMode.Acceleration);
-        }*/
-
-        if(m_DesiredMoveDirection != Vector3.zero && Mathf.Abs(m_LastLookAtAngle) < m_MinLookAtAngleToMove)
-        {
-            m_Rigidbody.AddForce(m_DesiredMoveDirection * m_Speed, ForceMode.Acceleration);
+            m_Rigidbody.AddForce(m_DesiredMoveDirection * m_Acceleration, ForceMode.Acceleration);
+            m_Rigidbody.velocity = Vector3.ClampMagnitude(m_Rigidbody.velocity, m_MaxVelocity);
             m_TimeToMove += Time.fixedDeltaTime;
         }
         else
@@ -93,7 +82,7 @@ public class BoatController : MonoBehaviour
 
         m_TimeToMove = Mathf.Clamp(m_TimeToMove, m_VelocityDragOverTime[0].time, m_VelocityDragOverTime[m_VelocityDragOverTime.length - 1].time);
         m_BuoyantObject.velocityDrag = m_VelocityDragOverTime.Evaluate(m_TimeToMove);
-        
+
 
         //m_PlayerOnBoard.UpdateSpeed(m_Rigidbody.velocity.magnitude);
     }
@@ -120,23 +109,28 @@ public class BoatController : MonoBehaviour
             Debug.DrawLine(transform.position, transform.position + flatLookAt, Color.red);
 
             m_LastLookAtAngle = Vector3.SignedAngle(flatLookAt, m_DesiredMoveDirection, Vector3.up);
-            m_Rigidbody.AddTorque(Vector3.up * Mathf.Sign(m_LastLookAtAngle) * m_AngularSpeed, ForceMode.Acceleration);
-
-            if(Mathf.Abs(m_LastLookAtAngle) >= m_MinLookAtAngleToMove)
-            {
-                m_TimeToLookAt += Time.fixedDeltaTime;
-            }
-            else
-            {
-                m_TimeToLookAt = 0f;
-            }
+            m_Rigidbody.AddTorque(Vector3.up * Mathf.Sign(m_LastLookAtAngle) * m_AngularAccelerationFromAngle.Evaluate(m_LastLookAtAngle), ForceMode.Acceleration);
         }
-        else
-        {
-            m_TimeToLookAt = 0f;
-        }
+    }
 
-        m_TimeToLookAt = Mathf.Clamp(m_TimeToLookAt, m_AngularDragOverTime[0].time, m_AngularDragOverTime[m_AngularDragOverTime.length - 1].time);
-        m_BuoyantObject.angularDrag = m_AngularDragOverTime.Evaluate(m_TimeToLookAt);
+    private void OnGUI()
+    {
+        Rect pos = new Rect(10, 10, 300, 20);
+        DrawLabel(ref pos, "Gravity :" + m_BuoyantObject.m_Gravity);
+        DrawLabel(ref pos, "");
+        DrawLabel(ref pos, "Acceleration: " + m_Acceleration);
+        DrawLabel(ref pos, "Velocity: " + m_Rigidbody.velocity + " => " + m_Rigidbody.velocity.magnitude + " / " + m_MaxVelocity);
+        DrawLabel(ref pos, "Velocity drag: " + m_BuoyantObject.velocityDrag);
+        DrawLabel(ref pos, "");
+        DrawLabel(ref pos, "Look at angle: " + m_LastLookAtAngle);
+        DrawLabel(ref pos, "Angular acceleration: " + m_AngularAccelerationFromAngle.Evaluate(m_LastLookAtAngle));
+        DrawLabel(ref pos, "Angular velocity: " + m_Rigidbody.angularVelocity + " => " + m_Rigidbody.angularVelocity.magnitude + " / " + m_Rigidbody.maxAngularVelocity);
+        DrawLabel(ref pos, "Angular drag: " + m_BuoyantObject.angularDrag);
+    }
+
+    private void DrawLabel(ref Rect pos, string msg)
+    {
+        GUI.Label(pos, msg);
+        pos.y += pos.height;
     }
 }
