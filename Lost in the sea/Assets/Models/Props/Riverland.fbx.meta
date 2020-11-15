@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Rope
+    second: {fileID: 2100000, guid: e0a474c88cc7ca142b71e6eb48e6703e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Wood1
     second: {fileID: 2100000, guid: 1745574a8ba2c1a4f9f11295cc97e9ee, type: 2}
   - first:
