@@ -1,12 +1,30 @@
 fileFormatVersion: 2
-guid: 1748548dcab3ef2439bc32748b4f600b
+guid: 894ad162443c87f46898455424b50941
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
       74: -4219534751575347666
-    second: Armature|Swim.001
-  externalObjects: {}
+    second: Swim
+  - first:
+      74: 4176198501225483813
+    second: Swim
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body
+    second: {fileID: 2100000, guid: 642a429eea6fade44b09a303937d63c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fins
+    second: {fileID: 2100000, guid: d2ede500eb522ae4f8bf39bcdee57435, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Front
+    second: {fileID: 2100000, guid: 20ac429cb506ef54280201645127a6f5, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -33,11 +51,40 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Swim
+      takeName: Armature|Armature|Armature|Swim.001|Armature|Swim.001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 31
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -88,7 +135,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.01
+    globalScale: 0.1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
