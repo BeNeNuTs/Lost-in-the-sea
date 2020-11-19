@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cinemachine;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,8 @@ public class MainCharacterController : MonoBehaviour
     [Header("Setup")]
     public CharacterController m_CharacterController;
     public Transform m_Camera;
+    public CinemachineVirtualCameraBase m_MainCamera;
+    public CinemachineVirtualCameraBase m_BoatCamera;
     public Animator m_Animator;
     public float m_Speed = 3f;
 
@@ -142,10 +145,14 @@ public class MainCharacterController : MonoBehaviour
         m_CharacterController.enabled = !m_IsInBoat;
         if (m_IsInBoat)
         {
+            m_MainCamera.Priority = 0;
+            m_BoatCamera.Priority = 1;
             _boatController.ProxyPlayer(this);
         }
         else
         {
+            m_MainCamera.Priority = 1;
+            m_BoatCamera.Priority = 0;
             m_BoatController.UnproxyPlayer();
         }
         m_BoatController = _boatController;
