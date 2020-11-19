@@ -28,7 +28,14 @@ public class MainCharacterController : MonoBehaviour
 
     private void Awake()
     {
-        ToggleMouseLockState();
+        LockMouse();
+
+#if UNITY_EDITOR
+        InputAction backquoteAction = new InputAction(binding: "<Keyboard>/backquote");
+        backquoteAction.performed += (callbackContext) => ToggleInputControlAutoSwitch();
+        backquoteAction.Enable();
+        PlayerContainer.Instance.m_PlayerInput.neverAutoSwitchControlSchemes = true;
+#endif
     }
 
     private void Update()
@@ -37,20 +44,27 @@ public class MainCharacterController : MonoBehaviour
         LookAt();
 
         UpdateSpeed(m_GroundVelocity.magnitude);
+    }
+
+    private void LockMouse()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
 #if UNITY_EDITOR
-        if (Keyboard.current.escapeKey.isPressed)
-        {
-            ToggleMouseLockState();
-        }
-#endif
-    }
-
-    private void ToggleMouseLockState()
+    private void ToggleInputControlAutoSwitch()
     {
-        Cursor.visible = !Cursor.visible;
-        Cursor.lockState = Cursor.visible ? CursorLockMode.None : CursorLockMode.Locked;
+        if(PlayerContainer.Instance.m_PlayerInput.currentControlScheme == "Gamepad")
+        {
+            PlayerContainer.Instance.m_PlayerInput.SwitchCurrentControlScheme("Keyboard&Mouse");
+        }
+        else
+        {
+            PlayerContainer.Instance.m_PlayerInput.SwitchCurrentControlScheme("Gamepad");
+        }
     }
+#endif
 
     private void Move()
     {
