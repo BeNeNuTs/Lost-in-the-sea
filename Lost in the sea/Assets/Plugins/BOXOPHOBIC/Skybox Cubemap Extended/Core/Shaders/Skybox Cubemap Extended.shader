@@ -17,6 +17,7 @@ Shader "Skybox/Cubemap Extended"
 		_RotationSpeed("Rotation Speed", Float) = 1
 		[StyledCategory(Fog)]_Fogg("[ Fogg ]", Float) = 1
 		[Toggle(_ENABLEFOG_ON)] _EnableFog("Enable Fog", Float) = 0
+		[Gamma]_FogColor("Fog Color", Color) = (0.5,0.5,0.5,1)
 		[Space(10)]_FogIntensity("Fog Intensity", Range( 0 , 1)) = 1
 		_FogHeight("Fog Height", Range( 0 , 1)) = 1
 		_FogSmoothness("Fog Smoothness", Range( 0.01 , 1)) = 0.01
@@ -96,6 +97,7 @@ Shader "Skybox/Cubemap Extended"
 			uniform half _RotationSpeed;
 			uniform half4 _TintColor;
 			uniform half _Exposure;
+			uniform half4 _FogColor;
 			uniform float _FogPosition;
 			uniform half _FogHeight;
 			uniform half _FogSmoothness;
@@ -161,14 +163,13 @@ Shader "Skybox/Cubemap Extended"
 				half4 CUBEMAP222 = ( float4( localDecodeHDR1189 , 0.0 ) * unity_ColorSpaceDouble * _TintColor * _Exposure );
 				float lerpResult678 = lerp( saturate( pow( (0.0 + (abs( ( i.ase_texcoord1.xyz.y + -_FogPosition ) ) - 0.0) * (1.0 - 0.0) / (_FogHeight - 0.0)) , ( 1.0 - _FogSmoothness ) ) ) , 0.0 , _FogFill);
 				float lerpResult1205 = lerp( 1.0 , lerpResult678 , _FogIntensity);
-				half FOG_MASK359 = lerpResult1205;
-				float4 lerpResult317 = lerp( unity_FogColor , CUBEMAP222 , FOG_MASK359);
 				#ifdef _ENABLEFOG_ON
-				float4 staticSwitch1179 = lerpResult317;
+					half FOG_MASK359 = lerpResult1205;
+					float4 lerpResult317 = lerp( _FogColor , CUBEMAP222 , FOG_MASK359);
+					float4 staticSwitch1179 = lerpResult317;
 				#else
-				float4 staticSwitch1179 = CUBEMAP222;
+					float4 staticSwitch1179 = CUBEMAP222;
 				#endif
-				
 				
 				finalColor = staticSwitch1179;
 				return finalColor;

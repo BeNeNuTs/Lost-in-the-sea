@@ -582,7 +582,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -2348,7 +2348,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CharacterController: {fileID: 5705684518602582854}
-  m_CameraGroup: {fileID: 658063854574319776}
   m_Camera: {fileID: 963009166}
   m_MainCamera: {fileID: 947613026}
   m_BoatCamera: {fileID: 8907070329475157813}
